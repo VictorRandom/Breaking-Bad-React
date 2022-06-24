@@ -1,27 +1,48 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import './App.css';
-import {PokemonApi} from './components/api';
+// import {PokemonApi} from './components/api';
 
 function App() {
 
-  const headers = {
-    'Accept': 'application/json',
-    
-  }
   
-  const getData = async (id: any) => {
-    // const url = `https://pokeapi.co/api/v2/pokemon/1`
-    const url = `https://the-one-api.dev/v2/character`;
-    const res = await fetch(url, {headers: headers})
+  const getDataCharacters = async (id: any) => {
+    const url = `https://www.breakingbadapi.com/api/characters`;
+    const res = await fetch(url)
+    const data = await res.json()
+    console.log(data)
+  }
+
+  const getDataEpisodes = async (id: any) => {
+    const url = `https://www.breakingbadapi.com/api/episodes`;
+    const res = await fetch(url)
+    const data = await res.json()
+    console.log(data)
+  }
+
+  const getDataQuotes = async (id: any) => {
+    const url = `https://www.breakingbadapi.com/api/quotes`;
+    const res = await fetch(url)
+    const data = await res.json()
+    console.log(data)
+  }
+
+  const getDataDeath = async (id: any) => {
+    const url = `https://www.breakingbadapi.com/api/deaths`;
+    const res = await fetch(url)
     const data = await res.json()
     console.log(data)
   }
 
 
+
+
   return (
     <>
-      <Button className='btn btn-primary' onClick={getData}>teste</Button>
+      <Button className='btn btn-primary' onClick={getDataCharacters}>Characters</Button>
+      <Button className='btn btn-primary' onClick={getDataEpisodes}>Episodes</Button>
+      <Button className='btn btn-primary' onClick={getDataQuotes}>Falas</Button>
+      <Button className='btn btn-primary' onClick={getDataDeath}>Mortes</Button>
     </>
   );
 }
